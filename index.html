@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>nongritv2</title>
+
+<link rel="icon" type="image/jpeg" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjr_2qdL0d8IU5aoRNMVxP6QL2Y_FxCPNMg29mRJx-dg&s=10">
+
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Russo One',sans-serif;
+}
+
+body{
+    background:#000;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+    position:relative;
+}
+
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+    radial-gradient(2px 2px at 90px 70px,#fff,transparent),
+    radial-gradient(1px 1px at 150px 50px,#fff,transparent),
+    radial-gradient(2px 2px at 250px 100px,#fff,transparent),
+    radial-gradient(1px 1px at 200px 150px,#fff,transparent),
+    radial-gradient(2px 1px at 150px 150px,#fff,transparent),
+    radial-gradient(1px 3px at 200px 200px,#fff,transparent),
+    radial-gradient(3px 1px at 200px 250px,#fff,transparent);
+    
+    background-size:350px 350px;
+    animation:moveStars 3s linear infinite;
+    opacity:.7;
+}
+
+@keyframes moveStars{
+    from{transform:translateY(0);}
+    to{transform:translateY(-300px);}
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:90%;
+    max-width:350px;
+    padding:25px;
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,.6);
+    box-shadow:0 0 20px rgba(255,255,255,.1);
+}
+
+/* เบอร์โทร */
+.phone{
+    font-size:40px;
+    margin-bottom:15px;
+    background:linear-gradient(90deg,#fff,#0037ff,#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* ปุ่ม Copy */
+.copy-btn{
+    border:none;
+    color:white;
+    padding:12px 25px;
+    border-radius:12px;
+    background:rgba(255,255,255,.05);
+    border:1px solid white;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.copy-btn:hover{
+    background:#000;
+    box-shadow:0 0 20px #fff;
+    transform:scale(1.05);
+}
+
+.copy-btn:active{
+    transform:scale(.95);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+
+    <h1 class="phone" id="phoneNumber">
+        0931599288
+    </h1>
+
+    <button class="copy-btn" onclick="copyNumber()" id="copyButton">
+        📋 Copy
+    </button>
+
+</div>
+
+<script>
+
+function copyNumber(){
+
+    const number = document.getElementById("phoneNumber").innerText;
+    const button = document.getElementById("copyButton");
+
+    navigator.clipboard.writeText(number);
+
+    button.innerText = "✅ Copied!";
+
+    setTimeout(function(){
+        button.innerText = "📋 Copy";
+    },1500);
+
+}
+
+</script>
+
+</body>
+</html>
